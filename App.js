@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -10,19 +9,6 @@ import SplashScreenAnimation from "./animations/splashScreenAnimation";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [shouldPlayAnimation, setShouldPlayAnimation] = useState(false);
-
-  useEffect(() => {
-    // This useEffect will play the animation when transitioning to the HomeScreen
-    if (shouldPlayAnimation) {
-      // You might want to add some logic to control when the animation should stop playing.
-      // For now, let's stop it after 3000ms (3 seconds).
-      setTimeout(() => {
-        setShouldPlayAnimation(false);
-      }, 3000);
-    }
-  }, [shouldPlayAnimation]);
-
   return (
     <>
       <NavigationContainer>
@@ -63,7 +49,7 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-      {shouldPlayAnimation && <SplashScreenAnimation />}
+      <SplashScreenAnimation />
     </>
   );
 }
